@@ -1,0 +1,1 @@
+web: gunicorn playlist_project.wsgi --log-file -
