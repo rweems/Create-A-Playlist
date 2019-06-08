@@ -12,7 +12,7 @@ class User(models.Model):
 
 class Playlist(models.Model):
     playlistName = models.CharField(max_length=100) 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='playlists')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.playlistName
@@ -20,5 +20,7 @@ class Playlist(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=100)
     artist = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='songs')
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='songs')
+
+    def __str__(self):
+        return self.title
