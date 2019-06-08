@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'playlist_database',
-        'USER': 'playlistUser',
+        'USER': 'playlistuser',
         'PASSWORD': 'playlist',
         'HOST': 'localhost'    
         }
