@@ -83,7 +83,8 @@ DATABASES = {
         'NAME': 'playlist_database',
         'USER': 'playlistUser',
         'PASSWORD': 'playlist',
-        'HOST': 'localhost'    }
+        'HOST': 'localhost'    
+        }
 }
 
 
