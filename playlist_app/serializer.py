@@ -14,13 +14,12 @@ class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Playlist
-        fields = ('id','user','playlistName')
+        fields = ('id','playlistName','user')
 
 
 class SongSerializer(serializers.HyperlinkedModelSerializer):
-    user = UserSerializer(read_only=True)
     playlist = PlaylistSerializer(read_only=True, many=True)
 
     class Meta:
         model = Song
-        fields = ('id','user','song','title','artist')
+        fields = ('id','playlist','title','artist')
