@@ -10,7 +10,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(read_only=True, view_name="user-detail")
+    user = serializers.HyperlinkedRelatedField(read_only=True, view_name='user-detail')
 
     class Meta:
         model = Playlist
@@ -18,7 +18,7 @@ class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class SongSerializer(serializers.HyperlinkedModelSerializer):
-    playlist = PlaylistSerializer(read_only=True, many=True)
+    playlist = serializers.HyperlinkedRelatedField(read_only=True, view_name='playlist-detail')
 
     class Meta:
         model = Song
