@@ -13,11 +13,11 @@ App: [App](https://playlist-project.herokuapp.com/)
 
 
 Whiteboarding
-![whiteboarding]()
+![whiteboarding](whiteboarding.png)
 
 
 ERD
-![ERD]()
+![ERD](ERD.png)
 
 
 ### Technology Used
