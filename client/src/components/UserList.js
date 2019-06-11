@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import AddUser from './AddUser'
 
 class UserList extends Component {
     state = {
-        error: '',
         users: [],
+        newUser: {
+            name: '',
+            email: '',
+            age: ''
+        },
         isFormDisplayed: false
     }
 
     componentDidMount = () => {
-        axios.get('/api/v1/users').then(res => {
+        axios.get('api/v1/users').then(res => {
             this.setState({ users: res.data });
         })
     }
@@ -53,11 +59,29 @@ class UserList extends Component {
         return (
             <div>
                 <h1>Users</h1>
-                
+                {
+                    this.state.users.map((user) => {
+                        return (
+                            <div key={user._id} className="linkTo" >
+                                <Link to={`/users/${user._id}`} style={{paddingTop:'10px'}}>
+                                    {user.name}
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
+
+                <button onClick={this.toggleForm} className="buttonClass">New User?</button>
+                {
+                    this.state.isFormDisplayed
+                        ?
+                        <AddUser newUser={this.state.newUser} handleChange={this.handleChange} createUser={this.createUser} />
+                        : null
+                }
+
             </div>
         )
     }
 }
-
 
 export default UserList;
