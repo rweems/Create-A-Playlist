@@ -5,8 +5,11 @@ class User extends Component {
 
     state = {
         user: {
-            playlist: []
+            name: '',
+            email: '',
+            age: ''
         },
+        isFormDisplayed: false
 
     }
 

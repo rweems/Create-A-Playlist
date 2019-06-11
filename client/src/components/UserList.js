@@ -5,6 +5,7 @@ import AddUser from './AddUser'
 
 class UserList extends Component {
     state = {
+        error: '',
         users: [],
         newUser: {
             name: '',
@@ -35,12 +36,8 @@ class UserList extends Component {
 
     createUser = (e) => {
         e.preventDefault()
-        axios
-            .post('/api/v1/users', {
-                name: this.state.newUser.name,
-                email: this.state.newUser.email,
-                age: this.state.newUser.age
-            }).then(res => {
+        axios.post('/api/v1/users', this.state.newUser)
+            .then(res => {
                 const userList = [...this.state.users]
                 userList.push(res.data)
                 this.setState({
@@ -49,7 +46,7 @@ class UserList extends Component {
                         email: '',
                         age: ''
                     },
-                    isFormDisplayed:false,
+                    isFormDisplayed: false,
                     users: userList
                 })
             })
@@ -62,8 +59,8 @@ class UserList extends Component {
                 {
                     this.state.users.map((user) => {
                         return (
-                            <div key={user._id} className="linkTo" >
-                                <Link to={`/users/${user._id}`} style={{paddingTop:'10px'}}>
+                            <div key={user.id} className="linkTo">
+                                <Link to={`/users/${user.id}`} style={{ paddingTop: '10px' }} name={this.state.user}>
                                     {user.name}
                                 </Link>
                             </div>
