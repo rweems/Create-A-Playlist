@@ -10,9 +10,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-
+          <a href="http://localhost:8888">
+            <button>Login with spotify</button>
+          </a>
           <Switch>
-            <Route exact path="/" component={UserList} />
+            <Route exact path="/users" component={UserList} />
             <Route path="/users/:id" component={User} />
 
           </Switch>
