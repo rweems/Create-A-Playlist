@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('', views.FrontendAppView.as_view()),
+    path('', views.FrontendAppView.as_view()),
     path('api/v1/',include('playlist_app.urls'))
 ]

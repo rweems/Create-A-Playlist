@@ -39,7 +39,7 @@ class UserList extends Component {
         axios.post('/api/v1/users/', this.state.newUser)
             .then(res => {
                 const userList = [...this.state.users]
-                userList.push(res.data)
+                userList.unshift(res.data)
                 this.setState({
                     newUser: {
                         name: '',
@@ -60,7 +60,7 @@ class UserList extends Component {
                     this.state.users.map((user) => {
                         return (
                             <div key={user.id} className="linkTo">
-                                <Link to={`api/v1/users/${user.id}`} style={{ paddingTop: '10px' }} name={this.state.user}>
+                                <Link to={`/api/v1/users/${user.id}`} style={{ paddingTop: '10px' }} name={this.state.user}>
                                     {user.name}
                                 </Link>
                             </div>

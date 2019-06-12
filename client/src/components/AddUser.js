@@ -4,6 +4,7 @@ class AddUser extends Component {
     render() {
         return (
             <form onSubmit={this.props.createUser}>
+                
                 <div>
                     <label htmlFor='name'>Name: </label>
                     <input id='name' type='text'
@@ -35,6 +36,7 @@ class AddUser extends Component {
                 <div>
                     <input type='submit' value='Submit' />
                 </div>
+                
             </form>
         );
     }
