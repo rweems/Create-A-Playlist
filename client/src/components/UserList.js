@@ -16,7 +16,7 @@ class UserList extends Component {
     }
 
     componentDidMount = () => {
-        axios.get('api/v1/users').then(res => {
+        axios.get('api/v1/users/').then(res => {
             this.setState({ users: res.data });
         })
     }
@@ -36,7 +36,7 @@ class UserList extends Component {
 
     createUser = (e) => {
         e.preventDefault()
-        axios.post('/api/v1/users', this.state.newUser)
+        axios.post('/api/v1/users/', this.state.newUser)
             .then(res => {
                 const userList = [...this.state.users]
                 userList.push(res.data)
@@ -60,7 +60,7 @@ class UserList extends Component {
                     this.state.users.map((user) => {
                         return (
                             <div key={user.id} className="linkTo">
-                                <Link to={`/users/${user.id}`} style={{ paddingTop: '10px' }} name={this.state.user}>
+                                <Link to={`api/v1/users/${user.id}`} style={{ paddingTop: '10px' }} name={this.state.user}>
                                     {user.name}
                                 </Link>
                             </div>
