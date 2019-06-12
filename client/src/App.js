@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import UserList from "./components/UserList";
 import User from "./components/User";
+import PlaylistList from "./components/PlaylistList";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
+import Playlist from "./components/Playlist";
 
 
 const spotifyApi = new SpotifyWebApi();
@@ -16,9 +18,13 @@ class App extends Component {
       <Router>
         <div className="App">
          
-          <Switch>
+          <Switch> 
+            <Route exact path="/" component={UserList} />
             <Route exact path="/users" component={UserList} />
-            <Route path="/users/:id" component={User} />
+            <Route exact path="/playlists" component={PlaylistList} />
+            <Route exact path="/users/:id" component={User} />
+            <Route exact path="/playlists/:id" component={Playlist} />
+
 
           </Switch>
         </div>
