@@ -10,7 +10,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(read_only=True, view_name='user-detail')
+    user = serializers.PrimaryKeyRelatedField(queryset = User.objects.all())
 
     class Meta:
         model = Playlist
@@ -18,7 +18,7 @@ class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class SongSerializer(serializers.HyperlinkedModelSerializer):
-    playlist = serializers.HyperlinkedRelatedField(read_only=True, view_name='playlist-detail')
+    playlist = serializers.PrimaryKeyRelatedField(queryset = Playlist.objects.all())
 
     class Meta:
         model = Song

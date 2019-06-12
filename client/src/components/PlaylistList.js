@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import AddUser from './AddUser'
 
 class PlaylistList extends Component {
     state = {
@@ -26,9 +25,9 @@ class PlaylistList extends Component {
     }
 
     handleChange = (e) => {
-        const createdPlaylist = { ...this.state.newPlaylist }
-        createdPlaylist[e.target.name] = e.target.value
-        this.setState({ newPlaylist: createdPlaylist })
+        const clonePlaylist = { ...this.state.newPlaylist }
+        clonePlaylist[e.target.name] = e.target.value
+        this.setState({ newPlaylist: clonePlaylist })
 
     }
 
@@ -37,7 +36,7 @@ class PlaylistList extends Component {
         axios.post('/api/v1/playlists/', this.state.newPlaylist)
             .then(res => {
                 const playlistList = [...this.state.playlists]
-                playlistList.push(res.data)
+                playlistList.unshift(res.data)
                 this.setState({
                     newPlaylist: {
                         playlistName: ''
