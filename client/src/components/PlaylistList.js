@@ -55,7 +55,7 @@ class PlaylistList extends Component {
                     this.state.playlists.map((playlist) => {
                         return (
                             <div key={playlist.id} className="linkTo">
-                                <Link to={`api/v1/playlists/${playlist.id}`} style={{ paddingTop: '10px' }} name={this.state.playlist}>
+                                <Link to={`/api/v1/playlists/${playlist.id}`} style={{ paddingTop: '10px' }} name={this.state.playlist}>
                                     {playlist.playlistName}
                                 </Link>
                             </div>
