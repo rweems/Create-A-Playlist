@@ -10,7 +10,6 @@ class User extends Component {
             age: ''
         },
         isFormDisplayed: false
-
     }
 
     componentDidMount() {
