@@ -14,7 +14,7 @@ gunicorn = "*"
 django-heroku = "*"
 django-extensions = "*"
 requests = "*"
-decouple = "*"
+
 python-decouple = "*"
 
 [requires]
