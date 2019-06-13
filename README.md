@@ -1,5 +1,5 @@
 
-# Dfango Playlist- Project 4 for General Assembly(Atlanta)
+# Django Playlist- Project 4 for General Assembly(Atlanta)
 
 
 Using the technology listed below, I have created an app that allows users to create a spotify playlist. 
