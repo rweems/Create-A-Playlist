@@ -18,6 +18,18 @@ class User extends Component {
         this.fetchUser(userId)
     }
 
+    toggleForm = () => {
+        this.setState((state, props) => {
+            return ({ isFormDisplayed: !state.isFormDisplayed })
+        })
+    }
+
+    handleChange = (e) => {
+        const _user = { ...this.state.user }
+        _user[e.target.name] = e.target.value
+        this.setState({ user: _user })
+    }
+
     fetchUser = async (userId) => {
         try {
             const userResponse = await axios.get(`/api/v1/users/${userId}`)
@@ -34,7 +46,7 @@ class User extends Component {
 
     updateUser = (e) => {
         e.preventDefault()
-        axios.put(`/api/v1/users/${this.props.match.params.id}`, this.state.user)
+        axios.put(`/api/v1/users/${this.props.match.params.id}/`, this.state.user)
             .then(res => {
                 this.setState({ user: res.data })
             })
