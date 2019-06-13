@@ -13,7 +13,7 @@ class Playlist extends Component {
 
     componentDidMount() {
         const playlistId = this.props.match.params.id;
-        this.fetchUser(playlistId)
+        this.fetchPlaylist(playlistId)
     }
 
     fetchPlaylist = async (playlistId) => {
@@ -41,7 +41,7 @@ class Playlist extends Component {
 
     deletePlaylist = () => {
         axios.delete(`/api/v1/playlists/${this.props.match.params.id}`).then(res => {
-            res.locaction('back')
+            res.redirect('/api/v1/playlists')
         })
     }
 
@@ -60,7 +60,7 @@ class Playlist extends Component {
                                 <label htmlFor='playlistName'>Playlist Name: </label>
                                 <input id='playlistName' type='text'
                                     name='playlistName' onChange={this.handleChange}
-                                    value={this.state.user.name}
+                                    value={this.state.playlist.playlistName}
                                     placeholder='Playlist Name' />
                             </div>
 
@@ -71,12 +71,12 @@ class Playlist extends Component {
 
                 <div className='form'>
                     <div>
-                        Playlist Name:{this.state.user.name}
+                        Playlist Name:{this.state.playlist.playlistName}
                     </div>
 
 
                     <br />
-                    <button onClick={this.deleteUser}>Delete</button>
+                    <button onClick={this.deletePlaylist}>Delete</button>
                 </div>
                 <br />
                 <br />
