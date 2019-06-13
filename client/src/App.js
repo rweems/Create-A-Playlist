@@ -21,7 +21,7 @@ class App extends Component {
           <Switch> 
             <Route exact path="/" component={UserList} />
             
-            <Route path="/api/v1/playlists" component={PlaylistList} />
+            <Route path="/playlists" component={PlaylistList} />
 
             <Route path="/api/v1/users/:id" component={User} />
             <Route path="/api/v1/playlists/:id" component={Playlist} />
