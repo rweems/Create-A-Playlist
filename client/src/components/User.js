@@ -65,9 +65,12 @@ class User extends Component {
                 <br />
 
                 <button onClick={this.toggleForm} className="buttonClass">Update User?</button>
+                <br />
+                <br />
                 {
                     this.state.isFormDisplayed
                         ?
+
                         <form onSubmit={this.updateUser}>
                             <div>
                                 <label htmlFor='name'>Name: </label>
@@ -94,11 +97,12 @@ class User extends Component {
                                     onChange={this.handleChange}
                                     value={this.state.user.age} />
                             </div>
-                            <br />
+
                             <input type='submit' value='Update' />
                         </form> : null
                 }
-
+                <br />
+                <br />
                 <div className='form'>
                     <div>
                         Name:{this.state.user.name}
@@ -113,7 +117,7 @@ class User extends Component {
                     </div>
 
                     <br />
-                    <button onClick={this.deleteUser}>Delete</button>
+                    <button onClick={this.deleteUser}>Delete User</button>
                 </div>
                 <br />
                 <br />
