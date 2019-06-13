@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import PlaylistList from './PlaylistList'
 class User extends Component {
 
     state = {
@@ -61,9 +61,13 @@ class User extends Component {
     render() {
         return (
             <div>
-
+                <PlaylistList user={this.state.user.id}/>
                 <br />
-
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <button onClick={this.toggleForm} className="buttonClass">Update User?</button>
                 <br />
                 <br />
