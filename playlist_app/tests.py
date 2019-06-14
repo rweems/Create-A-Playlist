@@ -10,9 +10,9 @@ track = "a grave mistake"
 
 data = requests.get(f'https://api.deezer.com/search?q=artist:"{artist}" track:"{track}"' ).json()
 #prints api call json
-#print(data)
+print(data)
 
-#prints artist name
+#prints artist name - song title
 print(data['data'][0]['artist']['name'] + " - " + data['data'][0]['title'] )
 
 #prints song title
