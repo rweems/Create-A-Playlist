@@ -62,11 +62,16 @@ class Playlist extends Component {
     render() {
         return (
             <div>
-                <SongList playlist={this.state.playlist.playlistName} id={this.state.playlist.id}/>
+                <SongList playlist={this.state.playlist.playlistName} id={this.state.playlist.id} />
 
                 <br />
-
-                <button onClick={this.toggleForm} className="buttonClass">Update Playlist?</button>
+                <br />
+                <br />
+                <br />
+                <br />
+                <button onClick={this.toggleForm} className="buttonClass">Update/Delete Playlist?</button>
+                <br />
+                <br />
                 {
                     this.state.isFormDisplayed
                         ?
@@ -81,21 +86,20 @@ class Playlist extends Component {
 
                             <br />
                             <input type='submit' value='Update' />
+                            &nbsp;&nbsp;&nbsp;
+                            <button onClick={this.deletePlaylist}>Delete</button>
                         </form> : null
                 }
-
+                <br />
+                <br />
+                <br />
                 <div className='form'>
                     <div>
                         Playlist Name:{this.state.playlist.playlistName}
                     </div>
 
-
-                    <br />
-                    <button onClick={this.deletePlaylist}>Delete</button>
                 </div>
-                <br />
-                <br />
-                <br />
+
 
 
             </div>
