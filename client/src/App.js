@@ -6,6 +6,7 @@ import PlaylistList from "./components/PlaylistList";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
 import Playlist from "./components/Playlist";
+import Song from "./components/Song";
 
 
 const spotifyApi = new SpotifyWebApi();
@@ -25,6 +26,7 @@ class App extends Component {
 
             <Route path="/api/v1/users/:id" component={User} />
             <Route path="/api/v1/playlists/:id" component={Playlist} />
+            <Route path="/api/v1/songs/:id" component={Song} />
 
 
           </Switch>
