@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router'
+import SongList from './SongList';
 
 class Playlist extends Component {
 
@@ -15,6 +16,18 @@ class Playlist extends Component {
     componentDidMount() {
         const playlistId = this.props.match.params.id;
         this.fetchPlaylist(playlistId)
+    }
+
+    toggleForm = () => {
+        this.setState((state, props) => {
+            return ({ isFormDisplayed: !state.isFormDisplayed })
+        })
+    }
+
+    handleChange = (e) => {
+        const _playlist = { ...this.state.playlist }
+        _playlist[e.target.name] = e.target.value
+        this.setState({ playlist: _playlist })
     }
 
     fetchPlaylist = async (playlistId) => {
@@ -33,15 +46,15 @@ class Playlist extends Component {
 
     updatePlaylist = (e) => {
         e.preventDefault()
-        axios.put(`/api/v1/playlists/${this.props.match.params.id}`, this.state.user)
+        axios.put(`/api/v1/playlists/${this.props.match.params.id}/`, this.state.playlist)
             .then(res => {
-                this.setState({ user: res.data })
+                this.setState({ playlist: res.data })
             })
     }
 
 
     deletePlaylist = () => {
-        axios.delete(`/api/v1/playlists/${this.props.match.params.id}`).then(res => {
+        axios.delete(`/api/v1/playlists/${this.props.match.params.id}/`).then(res => {
             res.redirect('/api/v1/playlists')
         })
     }
@@ -49,6 +62,7 @@ class Playlist extends Component {
     render() {
         return (
             <div>
+                <SongList playlist={this.state.playlist.playlistName} id={this.state.playlist.id}/>
 
                 <br />
 
