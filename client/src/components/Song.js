@@ -76,7 +76,7 @@ class Song extends Component {
                                     name='title'
                                     placeholder='Title'
                                     onChange={this.handleChange}
-                                    value={this.state.newSong.title} />
+                                    value={this.state.song.title} />
                             </div>
                             <div>
                                 <label htmlFor='artist'>Artist: </label>
@@ -84,7 +84,7 @@ class Song extends Component {
                                     name='artist'
                                     placeholder='Artist'
                                     onChange={this.handleChange}
-                                    value={this.state.newSong.artist} />
+                                    value={this.state.song.artist} />
                             </div>
                             <div>
                                 <label htmlFor='playlists'>Playlist: </label>
@@ -92,9 +92,13 @@ class Song extends Component {
                             </div>
                             <br />
                             <input type='submit' value='Update' />
+                            &nbsp;&nbsp;&nbsp;
+                            <button onClick={this.deletePlaylist}>Delete</button>
                         </form> : null
                 }
-
+                <br />
+                <br />
+                <br />
                 <div className='form'>
                     <div>
                         Title:{this.state.song.title}
@@ -103,15 +107,7 @@ class Song extends Component {
                     <div>
                         Artist: {this.state.song.artist}
                     </div>
-
-
-
-                    <br />
-                    <button onClick={this.deletePlaylist}>Delete</button>
                 </div>
-                <br />
-                <br />
-                <br />
 
 
             </div>
@@ -121,4 +117,4 @@ class Song extends Component {
 
 }
 
-export default Playlist;
+export default Song;
