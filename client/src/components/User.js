@@ -61,7 +61,7 @@ class User extends Component {
     render() {
         return (
             <div>
-                <PlaylistList user={this.state.user.name} id={this.state.user.id}/>
+                <PlaylistList user={this.state.user.name} id={this.state.user.id} />
                 <br />
                 <br />
                 <br />
