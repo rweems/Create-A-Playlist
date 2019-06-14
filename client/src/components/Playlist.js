@@ -51,7 +51,7 @@ class Playlist extends Component {
 
                 <br />
 
-                <button onClick={this.toggleForm} className="buttonClass">Update User?</button>
+                <button onClick={this.toggleForm} className="buttonClass">Update Playlist?</button>
                 {
                     this.state.isFormDisplayed
                         ?

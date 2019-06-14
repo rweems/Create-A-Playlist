@@ -13,7 +13,7 @@ class PlaylistList extends Component {
     }
 
     componentDidMount = () => {
-        axios.get('api/v1/playlists/').then(res => {
+        axios.get(`/api/v1/playlists/`).then(res => {
             this.setState({ playlists: res.data });
         })
     }
@@ -33,7 +33,11 @@ class PlaylistList extends Component {
 
     createPlaylist = (e) => {
         e.preventDefault()
-        axios.post('/api/v1/playlists/', this.state.newPlaylist)
+        const fakePlaylist = {...this.state.newPlaylist}
+        console.log(fakePlaylist)
+        fakePlaylist.user = this.props.id
+        console.log(fakePlaylist)
+        axios.post(`/api/v1/playlists/`, fakePlaylist)
             .then(res => {
                 const playlistList = [...this.state.playlists]
                 playlistList.unshift(res.data)
@@ -75,6 +79,10 @@ class PlaylistList extends Component {
                                     placeholder='Playlist Name'
                                     onChange={this.handleChange}
                                     value={this.state.newPlaylist.playlistName} />
+                            </div>
+                            <div>
+                            <label htmlFor='user'>User: </label>
+                                <input readOnly value={this.props.user} />
                             </div>
                             <br />
                             <div>
