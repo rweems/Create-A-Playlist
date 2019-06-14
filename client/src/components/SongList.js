@@ -61,7 +61,7 @@ class SongList extends Component {
                     this.state.songs.map((song) => {
                         return (
                             <div key={song.id} className="linkTo">
-                                <Link to={`/api/v1/songs/${song.id}`} style={{ paddingTop: '10px' }} name={this.state.song}>
+                                <Link to={`/api/v1/songs/${song.id}`} style={{ paddingTop: '10px' }} name={this.state.song} >
                                     {song.title} - {song.artist}
                                 </Link>
                             </div>
