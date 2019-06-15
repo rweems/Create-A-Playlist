@@ -68,6 +68,14 @@ class Playlist extends Component {
                 <br />
                 <br />
                 <br />
+
+                <div className='form'>
+                    <div>
+                        Playlist Name:{this.state.playlist.playlistName}
+                    </div>
+
+                </div>
+                <br />
                 <br />
                 <button onClick={this.toggleForm} className="buttonClass">Update/Delete Playlist?</button>
                 <br />
@@ -77,7 +85,7 @@ class Playlist extends Component {
                         ?
                         <form onSubmit={this.updatePlaylist}>
                             <div>
-                                <label htmlFor='playlistName'>Playlist Name: </label>
+                                <label htmlFor='playlistName'>New Playlist Name: </label>
                                 <input id='playlistName' type='text'
                                     name='playlistName' onChange={this.handleChange}
                                     value={this.state.playlist.playlistName}
@@ -90,15 +98,7 @@ class Playlist extends Component {
                             <button onClick={this.deletePlaylist}>Delete</button>
                         </form> : null
                 }
-                <br />
-                <br />
-                <br />
-                <div className='form'>
-                    <div>
-                        Playlist Name:{this.state.playlist.playlistName}
-                    </div>
-
-                </div>
+                
 
 
 

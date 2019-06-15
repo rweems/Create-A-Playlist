@@ -34,6 +34,7 @@ class Song extends Component {
     fetchSong = async (songId) => {
         try {
             const songResponse = await axios.get(`/api/v1/songs/${songId}`)
+            console.log(songResponse)
             this.setState({
                 song: songResponse.data,
             })
@@ -62,7 +63,18 @@ class Song extends Component {
     render() {
         return (
             <div>
+                <br />
+                <br />
+                <br />
+                <div className='form'>
+                    <div>
+                        Title: {this.state.song.title}
+                    </div>
 
+                    <div>
+                        Artist: {this.state.song.artist}
+                    </div>
+                </div>
                 <br />
 
                 <button onClick={this.toggleForm} className="buttonClass">Update Song?</button>
@@ -99,15 +111,7 @@ class Song extends Component {
                 <br />
                 <br />
                 <br />
-                <div className='form'>
-                    <div>
-                        Title:{this.state.song.title}
-                    </div>
 
-                    <div>
-                        Artist: {this.state.song.artist}
-                    </div>
-                </div>
 
 
             </div>

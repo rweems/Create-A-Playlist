@@ -66,50 +66,6 @@ class User extends Component {
                 <br />
                 <br />
                 <br />
-                <br />
-                <br />
-                <button onClick={this.toggleForm} className="buttonClass">Update/Delete User?</button>
-                <br />
-                <br />
-                {
-                    this.state.isFormDisplayed
-                        ?
-
-                        <form onSubmit={this.updateUser}>
-                            <div>
-                                <label htmlFor='name'>Name: </label>
-                                <input id='name' type='text'
-                                    name='name' onChange={this.handleChange}
-                                    value={this.state.user.name}
-                                    placeholder='Name' />
-                            </div>
-
-                            <div>
-                                <label htmlFor='email'>Email: </label>
-                                <input id='email' type='text'
-                                    name='email'
-                                    placeholder='Email'
-                                    onChange={this.handleChange}
-                                    value={this.state.user.email} />
-                            </div>
-
-                            <div>
-                                <label htmlFor='age'>Age: </label>
-                                <input id='age' type='number'
-                                    name='age'
-                                    placeholder='Age'
-                                    onChange={this.handleChange}
-                                    value={this.state.user.age} />
-                            </div>
-                            <br />
-                            <input type='submit' value='Update' />
-                            &nbsp;&nbsp;&nbsp;
-                            <button onClick={this.deleteUser}>Delete</button>
-                        </form> : null
-                }
-                <br />
-                <br />
-                <br />
                 <div className='form'>
                     <div>
                         Name:{this.state.user.name}
@@ -124,6 +80,47 @@ class User extends Component {
                     </div>
 
                 </div>
+                <br />
+                <br />
+                <button onClick={this.toggleForm} className="buttonClass">Update/Delete User?</button>
+                <br />
+                <br />
+                {
+                    this.state.isFormDisplayed
+                        ?
+
+                        <form onSubmit={this.updateUser}>
+                            <div>
+                                <label htmlFor='name'>New Name: </label>
+                                <input id='name' type='text'
+                                    name='name' onChange={this.handleChange}
+                                    value={this.state.user.name}
+                                    placeholder='Name' />
+                            </div>
+
+                            <div>
+                                <label htmlFor='email'>New Email: </label>
+                                <input id='email' type='text'
+                                    name='email'
+                                    placeholder='Email'
+                                    onChange={this.handleChange}
+                                    value={this.state.user.email} />
+                            </div>
+
+                            <div>
+                                <label htmlFor='age'>New Age: </label>
+                                <input id='age' type='number'
+                                    name='age'
+                                    placeholder='Age'
+                                    onChange={this.handleChange}
+                                    value={this.state.user.age} />
+                            </div>
+                            <br />
+                            <input type='submit' value='Update' />
+                            &nbsp;&nbsp;&nbsp;
+                            <button onClick={this.deleteUser}>Delete</button>
+                        </form> : null
+                }
             
             </div>
         );
