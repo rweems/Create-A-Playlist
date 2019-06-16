@@ -4,6 +4,7 @@ import PlaylistList from './PlaylistList'
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+
 class User extends Component {
 
     state = {
@@ -85,7 +86,7 @@ class User extends Component {
                 </div>
                 <br />
                 <br />
-                <Button variant="outlined" color="inherit" size="medium" onClick={this.toggleForm} className="buttonClass">Update/Delete User?</Button>
+                <Button variant="outlined" size="medium" onClick={this.toggleForm} className="buttonClass">Update/Delete User?</Button>
                 <br />
                 <br />
                 {
@@ -124,7 +125,9 @@ class User extends Component {
                             </Button>
 
                             &nbsp;&nbsp;&nbsp;
-                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deleteUser}>Delete</Button>
+                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deleteUser}>
+                                Delete
+                            </Button>
                         </form> : null
                 }
 

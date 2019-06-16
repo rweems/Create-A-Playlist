@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router'
 import SongList from './SongList';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 
 class Playlist extends Component {
 
@@ -77,7 +80,9 @@ class Playlist extends Component {
                 </div>
                 <br />
                 <br />
-                <button onClick={this.toggleForm} className="buttonClass">Update/Delete Playlist?</button>
+                <Button variant="outlined" size="medium" onClick={this.toggleForm} className="buttonClass">
+                    Update/Delete Playlist?
+                </Button>
                 <br />
                 <br />
                 {
@@ -85,17 +90,21 @@ class Playlist extends Component {
                         ?
                         <form onSubmit={this.updatePlaylist}>
                             <div>
-                                <label htmlFor='playlistName'>New Playlist Name: </label>
-                                <input id='playlistName' type='text'
+                                <InputLabel htmlFor='playlistName'>New Playlist Name: </InputLabel>
+                                <Input id='playlistName' type='text'
                                     name='playlistName' onChange={this.handleChange}
                                     value={this.state.playlist.playlistName}
                                     placeholder='Playlist Name' />
                             </div>
 
                             <br />
-                            <input type='submit' value='Update' />
+                            <Button variant="outlined" color="inherit" size="medium" type='submit' value='Update'>
+                                Update
+                            </Button>
                             &nbsp;&nbsp;&nbsp;
-                            <button onClick={this.deletePlaylist}>Delete</button>
+                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deletePlaylist}>
+                                Delete
+                            </Button>
                         </form> : null
                 }
                 

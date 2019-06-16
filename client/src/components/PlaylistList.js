@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 
 class PlaylistList extends Component {
     state = {
@@ -33,7 +36,7 @@ class PlaylistList extends Component {
 
     createPlaylist = (e) => {
         e.preventDefault()
-        const fakePlaylist = {...this.state.newPlaylist}
+        const fakePlaylist = { ...this.state.newPlaylist }
         console.log(fakePlaylist)
         fakePlaylist.user = this.props.id
         console.log(fakePlaylist)
@@ -66,27 +69,33 @@ class PlaylistList extends Component {
                         )
                     })
                 }
-
-                <button onClick={this.toggleForm} className="buttonClass">New Playlist?</button>
+                <br />
+                <Button variant="outlined" size="medium" onClick={this.toggleForm} className="buttonClass">
+                    New Playlist?
+                </Button>
+                <br />
+                <br />
                 {
                     this.state.isFormDisplayed
                         ?
                         <form onSubmit={this.createPlaylist}>
                             <div>
-                                <label htmlFor='playlistName'>Playlist Name: </label>
-                                <input id='playlistName' type='text'
+                                <InputLabel htmlFor='playlistName'>Playlist Name: </InputLabel>
+                                <Input id='playlistName' type='text'
                                     name='playlistName'
-                                    placeholder='Playlist Name'
                                     onChange={this.handleChange}
                                     value={this.state.newPlaylist.playlistName} />
                             </div>
+                            <br />
                             <div>
-                            <label htmlFor='user'>User: </label>
-                                <input readOnly value={this.props.user} />
+                                <InputLabel htmlFor='user'>User: </InputLabel>
+                                <Input readOnly value={this.props.user} />
                             </div>
                             <br />
                             <div>
-                                <input type='submit' value='Submit' />
+                                <Button variant="outlined" type='submit' value='Submit'>
+                                    Submit
+                                </Button>
                             </div>
                         </form> : null
                 }

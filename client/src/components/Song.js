@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router'
-
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 
 class Song extends Component {
 
@@ -48,7 +50,7 @@ class Song extends Component {
             })
         }
     }
-    
+
 
     updateSong = (e) => {
         e.preventDefault()
@@ -97,35 +99,45 @@ class Song extends Component {
                 </div>
                 <br />
 
-                <button onClick={this.toggleForm} className="buttonClass">Update Song?</button>
+                <Button variant="outlined" size="medium" onClick={this.toggleForm} className="buttonClass">
+                    Update Song?
+                </Button>
+                <br />
+                <br />
                 {
                     this.state.isFormDisplayed
                         ?
                         <form onSubmit={this.updateSong}>
                             <div>
-                                <label htmlFor='title'>Title: </label>
-                                <input id='title' type='text'
+                                <InputLabel htmlFor='title'>Title: </InputLabel>
+                                <Input id='title' type='text'
                                     name='title'
-                                    placeholder='Title'
                                     onChange={this.handleChange}
                                     value={this.state.song.title} />
                             </div>
+                            <br />
                             <div>
-                                <label htmlFor='artist'>Artist: </label>
-                                <input id='artist' type='text'
+                                <InputLabel htmlFor='artist'>Artist: </InputLabel>
+                                <Input id='artist' type='text'
                                     name='artist'
                                     placeholder='Artist'
                                     onChange={this.handleChange}
                                     value={this.state.song.artist} />
                             </div>
-                            <div>
-                                <label htmlFor='playlists'>Playlist: </label>
-                                <input readOnly value={this.props.playlist} />
-                            </div>
                             <br />
-                            <input type='submit' value='Update' />
+                            <div>
+                                <InputLabel htmlFor='playlists'>Playlist: </InputLabel>
+                                <Input readOnly value={this.props.playlist} />
+                            </div>
+
+                            <br />
+                            <Button variant="outlined" color="inherit" size="medium" type='submit' value='Update'>
+                                Update
+                            </Button>
                             &nbsp;&nbsp;&nbsp;
-                            <button onClick={this.deletePlaylist}>Delete</button>
+                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deletePlaylist}>
+                                Delete
+                            </Button>
                         </form> : null
                 }
                 <br />
