@@ -74,7 +74,7 @@ class Playlist extends Component {
 
                 <div className='form'>
                     <div>
-                        Playlist Name:{this.state.playlist.playlistName}
+                        Playlist Name: {this.state.playlist.playlistName}
                     </div>
 
                 </div>
