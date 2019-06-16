@@ -7,7 +7,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
 import Playlist from "./components/Playlist";
 import Song from "./components/Song";
-
+import bg from './images/music.jpg'
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -15,13 +15,22 @@ class App extends Component {
 
 
   render() {
+    const styles = {
+      paperContainer: {
+        height: 1006,
+       
+        backgroundImage: `url(${bg})`,
+        
+      }
+    };
     return (
+
       <Router>
-        <div className="App">
-         
-          <Switch> 
+        <div className="App" style ={styles.paperContainer}>
+
+          <Switch>
             <Route exact path="/" component={UserList} />
-            
+
             <Route path="/playlists" component={PlaylistList} />
 
             <Route path="/api/v1/users/:id" component={User} />
