@@ -18,10 +18,6 @@ class Song extends Component {
     componentDidMount() {
         const songId = this.props.match.params.id;
         this.fetchSong(songId)
-        fetch(`https://api.deezer.com/search?q=artist:"ice nine kills"track:"a grave mistake"`)
-            .then(results => {
-                console.log(results);
-            })
     }
 
     toggleForm = () => {
@@ -52,6 +48,7 @@ class Song extends Component {
             })
         }
     }
+    
 
     updateSong = (e) => {
         e.preventDefault()
@@ -68,14 +65,23 @@ class Song extends Component {
         })
     }
 
-    getSongData = (artist, title) => {
-        let data = `https://api.deezer.com/search?q=artist:"${artist}"track:"${title}"`
-        console.log(JSON.parse(data))
+    getSongData = () => {
+        axios.get(`/api/v1/songs/${this.props.match.params.id}`)
+            .then(song => {
+                console.log(song)
+                const artist = this.state.song.artist
+                const title = this.state.song.title
+                axios.get(`https://api.deezer.com/search?q=artist:"${artist}"track:"${title}"`)
+                    .then(stuff => {
+                        console.log(stuff)
+                    })
+            })
     }
 
     render() {
         return (
             <div>
+                <button onClick={this.getSongData}>Show data</button>
                 {this.state.picture}
                 <br />
                 <br />
