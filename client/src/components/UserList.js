@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import AddUser from './AddUser'
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 
 class UserList extends Component {
     state = {
@@ -67,8 +70,8 @@ class UserList extends Component {
                         )
                     })
                 }
-
-                <button onClick={this.toggleForm} className="buttonClass">New User?</button>
+                <br />
+                <Button variant="outlined" color="inherit" size="medium" onClick={this.toggleForm} className="buttonClass">New User?</Button>
                 {
                     this.state.isFormDisplayed
                         ?

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PlaylistList from './PlaylistList'
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 class User extends Component {
 
     state = {
@@ -82,7 +85,7 @@ class User extends Component {
                 </div>
                 <br />
                 <br />
-                <button onClick={this.toggleForm} className="buttonClass">Update/Delete User?</button>
+                <Button variant="outlined" color="inherit" size="medium" onClick={this.toggleForm} className="buttonClass">Update/Delete User?</Button>
                 <br />
                 <br />
                 {
@@ -91,37 +94,40 @@ class User extends Component {
 
                         <form onSubmit={this.updateUser}>
                             <div>
-                                <label htmlFor='name'>New Name: </label>
-                                <input id='name' type='text'
+                                <InputLabel htmlFor='name'>New Name: </InputLabel>
+                                <Input id='name' type='text'
                                     name='name' onChange={this.handleChange}
                                     value={this.state.user.name}
                                     placeholder='Name' />
                             </div>
-
+                            <br />
                             <div>
-                                <label htmlFor='email'>New Email: </label>
-                                <input id='email' type='text'
+                                <InputLabel htmlFor='email'>New Email: </InputLabel>
+                                <Input id='email' type='text'
                                     name='email'
                                     placeholder='Email'
                                     onChange={this.handleChange}
                                     value={this.state.user.email} />
                             </div>
-
+                            <br />
                             <div>
-                                <label htmlFor='age'>New Age: </label>
-                                <input id='age' type='number'
+                                <InputLabel htmlFor='age'>New Age: </InputLabel>
+                                <Input id='age' type='number'
                                     name='age'
                                     placeholder='Age'
                                     onChange={this.handleChange}
                                     value={this.state.user.age} />
                             </div>
                             <br />
-                            <input type='submit' value='Update' />
+                            <Button variant="outlined" color="inherit" size="medium" type='submit' value='Update' >
+                                Update
+                            </Button>
+
                             &nbsp;&nbsp;&nbsp;
-                            <button onClick={this.deleteUser}>Delete</button>
+                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deleteUser}>Delete</Button>
                         </form> : null
                 }
-            
+
             </div>
         );
     }

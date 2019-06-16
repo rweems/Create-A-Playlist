@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+
 class AddUser extends Component {
     state = {}
     render() {
@@ -6,35 +10,35 @@ class AddUser extends Component {
             <form onSubmit={this.props.createUser}>
                 
                 <div>
-                    <label htmlFor='name'>Name: </label>
-                    <input id='name' type='text'
+                    <br />
+                    <InputLabel htmlFor='name'>Name: </InputLabel>
+                    <Input id='name' type='text'
                         name='name'
-                        placeholder='Name'
                         onChange={this.props.handleChange}
                         value={this.props.newUser.name} />
                 </div>
-
+                <br />
                 <div>
-                    <label htmlFor='email'>Email: </label>
-                    <input id='email' type='text'
+                    <InputLabel htmlFor='email'>Email: </InputLabel>
+                    <Input id='email' type='text'
                         name='email'
-                        placeholder='Email'
                         onChange={this.props.handleChange}
                         value={this.props.newUser.email} />
                 </div>
-
+                <br />
                 <div>
-                    <label htmlFor='age'>Age: </label>
-                    <input id='age' type='number'
+                    <InputLabel htmlFor='age'>Age: </InputLabel>
+                    <Input id='age' type='number'
                         name='age'
-                        placeholder='Age'
                         onChange={this.props.handleChange}
                         value={this.props.newUser.age} />
                 </div>
 
                 <br />
                 <div>
-                    <input type='submit' value='Submit' />
+                    <Button variant="outlined" color="inherit" size="medium" type='submit' value='Submit'>
+                        Submit
+                    </Button>
                 </div>
                 
             </form>

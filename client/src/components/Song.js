@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router'
-import SongList from './SongList';
+
 
 class Song extends Component {
 
     state = {
         song: {
             title: '',
-            artist: ''
+            artist: '',
+            picture: []
         },
         isFormDisplayed: false
 
@@ -17,6 +18,10 @@ class Song extends Component {
     componentDidMount() {
         const songId = this.props.match.params.id;
         this.fetchSong(songId)
+        fetch(`https://api.deezer.com/search?q=artist:"ice nine kills"track:"a grave mistake"`)
+            .then(results => {
+                console.log(results);
+            })
     }
 
     toggleForm = () => {
@@ -32,6 +37,7 @@ class Song extends Component {
     }
 
     fetchSong = async (songId) => {
+
         try {
             const songResponse = await axios.get(`/api/v1/songs/${songId}`)
             console.log(songResponse)
@@ -41,7 +47,9 @@ class Song extends Component {
         }
         catch (error) {
             console.log(error)
-            this.setState({ error: error.message })
+            this.setState({
+                error: error.message
+            })
         }
     }
 
@@ -60,9 +68,15 @@ class Song extends Component {
         })
     }
 
+    getSongData = (artist, title) => {
+        let data = `https://api.deezer.com/search?q=artist:"${artist}"track:"${title}"`
+        console.log(JSON.parse(data))
+    }
+
     render() {
         return (
             <div>
+                {this.state.picture}
                 <br />
                 <br />
                 <br />
