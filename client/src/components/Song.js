@@ -13,7 +13,8 @@ class Song extends Component {
             artist: '',
             picture: []
         },
-        isFormDisplayed: false
+        isFormDisplayed: false,
+        redirectToPlaylists:false
 
     }
 
@@ -63,7 +64,7 @@ class Song extends Component {
 
     deleteSong = () => {
         axios.delete(`/api/v1/songs/${this.props.match.params.id}/`).then(res => {
-            res.redirect('/api/v1/songs')
+            this.setState({redirectToPlaylists:true})
         })
     }
 
@@ -81,6 +82,9 @@ class Song extends Component {
     }
 
     render() {
+        if(this.state.redirectToPlaylists) {
+            return (<Redirect go={-1} />)
+        }
         return (
             <div>
                 <button onClick={this.getSongData}>Show data</button>
@@ -135,7 +139,7 @@ class Song extends Component {
                                 Update
                             </Button>
                             &nbsp;&nbsp;&nbsp;
-                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deletePlaylist}>
+                            <Button variant="outlined" color="secondary" size="medium" onClick={this.deleteSong}>
                                 Delete
                             </Button>
                         </form> : null

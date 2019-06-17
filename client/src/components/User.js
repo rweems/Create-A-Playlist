@@ -4,6 +4,7 @@ import PlaylistList from './PlaylistList'
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import {Redirect} from 'react-router-dom';
 
 class User extends Component {
 
@@ -13,7 +14,8 @@ class User extends Component {
             email: '',
             age: ''
         },
-        isFormDisplayed: false
+        isFormDisplayed: false,
+        redirectHome: false,
     }
 
     componentDidMount() {
@@ -58,11 +60,14 @@ class User extends Component {
 
     deleteUser = () => {
         axios.delete(`/api/v1/users/${this.props.match.params.id}`).then(res => {
-            res.locaction('back')
+            this.setState({redirectHome: true})
         })
     }
 
     render() {
+        if(this.state.redirectHome) {
+            return (<Redirect to="/" />)
+        }
         return (
             <div>
                 <PlaylistList user={this.state.user.name} id={this.state.user.id} />

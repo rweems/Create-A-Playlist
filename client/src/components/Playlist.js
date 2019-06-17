@@ -12,7 +12,9 @@ class Playlist extends Component {
         playlist: {
             playlistName: '',
         },
-        isFormDisplayed: false
+        isFormDisplayed: false,
+        redirectToUsers: false
+
 
     }
 
@@ -58,11 +60,14 @@ class Playlist extends Component {
 
     deletePlaylist = () => {
         axios.delete(`/api/v1/playlists/${this.props.match.params.id}/`).then(res => {
-            res.redirect('/api/v1/playlists')
+            this.setState({redirectToUsers:true})
         })
     }
 
     render() {
+        if(this.state.redirectToUsers) {
+            return (<Redirect go={-1} />)
+        }
         return (
             <div>
                 <SongList playlist={this.state.playlist.playlistName} id={this.state.playlist.id} />
