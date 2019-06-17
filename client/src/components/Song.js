@@ -14,13 +14,28 @@ class Song extends Component {
             picture: []
         },
         isFormDisplayed: false,
-        redirectToPlaylists:false
+        redirectToPlaylists: false
 
     }
 
     componentDidMount() {
-        const songId = this.props.match.params.id;
-        this.fetchSong(songId)
+
+        this.fetchSong(this.props.match.params.id)
+            .then(() => {
+                axios.get(`https://deezerdevs-deezer.p.rapidapi.com/search?q=artist:"${this.state.song.artist}"`, {
+                    headers: {
+                        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                        "X-RapidAPI-Key": "67deb47c2cmsh8ae4bad8892782ep19b745jsn5b8de04a160e"
+                    }
+
+                }).then(res => {
+                    console.log(res.data['data'])
+                    
+                })
+
+            })
+
+
     }
 
     toggleForm = () => {
@@ -35,21 +50,14 @@ class Song extends Component {
         this.setState({ song: _song })
     }
 
-    fetchSong = async (songId) => {
-
-        try {
-            const songResponse = await axios.get(`/api/v1/songs/${songId}`)
-            console.log(songResponse)
-            this.setState({
-                song: songResponse.data,
+    fetchSong = (songId) => {
+        return axios.get(`/api/v1/songs/${songId}`)
+            .then(songResponse => {
+                console.log(songResponse)
+                this.setState({
+                    song: songResponse.data,
+                })
             })
-        }
-        catch (error) {
-            console.log(error)
-            this.setState({
-                error: error.message
-            })
-        }
     }
 
 
@@ -64,7 +72,7 @@ class Song extends Component {
 
     deleteSong = () => {
         axios.delete(`/api/v1/songs/${this.props.match.params.id}/`).then(res => {
-            this.setState({redirectToPlaylists:true})
+            this.setState({ redirectToPlaylists: true })
         })
     }
 
@@ -72,17 +80,12 @@ class Song extends Component {
         axios.get(`/api/v1/songs/${this.props.match.params.id}`)
             .then(song => {
                 console.log(song)
-                const artist = this.state.song.artist
-                const title = this.state.song.title
-                axios.get(`https://api.deezer.com/search?q=artist:"${artist}"track:"${title}"`)
-                    .then(stuff => {
-                        console.log(stuff)
-                    })
+
             })
     }
 
     render() {
-        if(this.state.redirectToPlaylists) {
+        if (this.state.redirectToPlaylists) {
             return (<Redirect go={-1} />)
         }
         return (
