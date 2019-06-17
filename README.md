@@ -30,6 +30,9 @@ ERD
 * CSS
 
 
+* Deezer Api
+
+
 * Django
 
 
@@ -45,4 +48,3 @@ ERD
 * React
 
 
-* Deezer Api
