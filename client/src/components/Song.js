@@ -4,6 +4,13 @@ import { Route, Redirect } from 'react-router'
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import styled from 'styled-components'
+
+const imgStyle = {
+    margin: '10px',
+    height: '200px'
+}
+
 
 class Song extends Component {
 
@@ -30,7 +37,8 @@ class Song extends Component {
 
                 }).then(res => {
                     console.log(res.data['data'])
-                    
+                    let image = document.getElementById('picture').src = res.data['data'][0]['album']['cover']
+                    this.setState({ picture: image })
                 })
 
             })
@@ -76,22 +84,17 @@ class Song extends Component {
         })
     }
 
-    getSongData = () => {
-        axios.get(`/api/v1/songs/${this.props.match.params.id}`)
-            .then(song => {
-                console.log(song)
-
-            })
-    }
 
     render() {
         if (this.state.redirectToPlaylists) {
             return (<Redirect go={-1} />)
         }
+
         return (
             <div>
-                <button onClick={this.getSongData}>Show data</button>
-                {this.state.picture}
+                <div>
+                    <img id="picture" src="" style={imgStyle}/>
+                </div>
                 <br />
                 <br />
                 <br />
@@ -157,7 +160,7 @@ class Song extends Component {
         );
     }
 
-
 }
+
 
 export default Song;
